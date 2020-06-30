@@ -4,6 +4,7 @@
   "description": "Resolução de problemas http://dojopuzzles.com/",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "jest",
     "dev": "ts-node-dev  --respawn --transpileOnly --ignore-watch node_modules --no-notify src/index.ts",
     "start": "ts-node  src/index.ts"
@@ -26,8 +27,5 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.157",
-    "lodash": "^4.17.15",
-    "log4js": "^6.3.0"
   }
 }

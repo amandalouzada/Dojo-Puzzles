@@ -10,5 +10,12 @@
     "allowJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "coverage",
+    "input.txt",
+    "jest.config.js"
+  ]
 }
