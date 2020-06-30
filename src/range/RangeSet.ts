@@ -8,18 +8,33 @@ export default class RangeSet {
     this.props = props
   }
 
-  get value(): number[] {
-    if (this.props.intervals.length <= 1) return this.props.intervals;
-    this.props.intervals = this.props.intervals.sort(RangeSet.compareMaxFn).filter(RangeSet.compareDublicateFn);
-    let stack: any[] = [];
-    let result: any[] = [];
-    this.props.intervals.forEach((a, index) => {
-      if ((a === this.props.intervals[index + 1] - 1)) {
-        stack.push(a)
-      } else {
-        result.push([...stack, a])
-        stack = []
+  private static compareMax = (a: number, b: number) => a - b;
+
+  private static compareDublicate =
+    (element: number, position: number, self: number[]) =>
+      self.indexOf(element) == position;
+
+  private get orderedInterval(): number[] {
+    return this.props.intervals
+      .sort(RangeSet.compareMax)
+      .filter(RangeSet.compareDublicate);
+  }
+
+
+  get value(): number[][] {
+    if (this.orderedInterval.length <= 1) return [this.orderedInterval];
+    let stack: number[] = [];
+    let result: number[][] = [];
+    this.orderedInterval.forEach((element, index, self) => {
+      const next = () => self[index + 1];
+
+      if ((element === next() - 1)) {
+        if (stack.length < 1) stack.push(element);
+        return;
       }
+      result.push([...stack, element])
+      stack = []
+
     })
     return result
   }
@@ -28,9 +43,5 @@ export default class RangeSet {
     return new RangeSet(props);
   }
 
-  private static compareMaxFn = (a: number, b: number) => a - b;
 
-  private static compareDublicateFn =
-    (element: number, position: number, self: number[]) =>
-      self.indexOf(element) == position;
 }
