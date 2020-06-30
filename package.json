@@ -1,0 +1,33 @@
+{
+  "name": "dojo-puzzles",
+  "version": "1.0.0",
+  "description": "Resolução de problemas http://dojopuzzles.com/",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "ts-node-dev  --respawn --transpileOnly --ignore-watch node_modules --no-notify src/index.ts",
+    "start": "ts-node  src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amandalouzada/Dojo-Puzzles.git"
+  },
+  "author": "Amanda Louzada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amandalouzada/Dojo-Puzzles/issues"
+  },
+  "homepage": "https://github.com/amandalouzada/Dojo-Puzzles#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.3",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.1",
+    "ts-node-dev": "^1.0.0-pre.49",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.157",
+    "lodash": "^4.17.15",
+    "log4js": "^6.3.0"
+  }
+}
